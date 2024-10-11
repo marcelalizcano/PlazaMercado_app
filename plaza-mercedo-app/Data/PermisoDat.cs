@@ -11,7 +11,7 @@ namespace Data
         Persistence objPer = new Persistence();
 
         // Método para mostrar los permisos desde la base de datos.
-        public DataSet showProducts()
+        public DataSet showPermisos()
         {
             // Se crea un adaptador de datos para MySQL.
             MySqlDataAdapter objAdapter = new MySqlDataAdapter();
@@ -19,7 +19,7 @@ namespace Data
             // Se crea un DataSet para almacenar los resultados de la consulta.
             DataSet objData = new DataSet();
 
-            // Se crea un comando MySQL para seleccionar los productos utilizando un procedimiento almacenado.
+            // Se crea un comando MySQL para seleccionar los permisos utilizando un procedimiento almacenado.
             MySqlCommand objSelectCmd = new MySqlCommand();
 
             // Se establece la conexión del comando utilizando el método openConnection() de Persistence.
@@ -40,7 +40,7 @@ namespace Data
             // Se cierra la conexión después de obtener los datos.
             objPer.closeConnection();
 
-            // Se devuelve el DataSet que contiene los productos.
+            // Se devuelve el DataSet que contiene los permisos.
             return objData;
         }
         //Metodo para guardar un nuevo Permiso
@@ -50,13 +50,13 @@ namespace Data
             bool executed = false;
             int row;// Variable para almacenar el número de filas afectadas por la operación.
 
-            // Se crea un comando MySQL para insertar un nuevo producto utilizando un procedimiento almacenado.
+            // Se crea un comando MySQL para insertar un nuevo permiso utilizando un procedimiento almacenado.
             MySqlCommand objSelectCmd = new MySqlCommand();
             objSelectCmd.Connection = objPer.openConnection();
             objSelectCmd.CommandText = "spInsertPermiso"; //nombre del procedimiento almacenado
             objSelectCmd.CommandType = CommandType.StoredProcedure;
 
-            // Se agregan parámetros al comando para pasar los valores del producto.
+            // Se agregan parámetros al comando para pasar los valores del permiso.
             objSelectCmd.Parameters.Add("p_name", MySqlDbType.VarString).Value = _name;
             objSelectCmd.Parameters.Add("p_description", MySqlDbType.VarString).Value = _description;
 
@@ -93,7 +93,7 @@ namespace Data
             objSelectCmd.CommandText = "spUpdatePermiso"; //nombre del procedimiento almacenado
             objSelectCmd.CommandType = CommandType.StoredProcedure;
 
-            // Se agregan parámetros al comando para pasar los valores del producto.
+            // Se agregan parámetros al comando para pasar los valores del permiso.
             objSelectCmd.Parameters.Add("p_id", MySqlDbType.Int32).Value = _id;
             objSelectCmd.Parameters.Add("p_name", MySqlDbType.VarString).Value = _name;
             objSelectCmd.Parameters.Add("p_description", MySqlDbType.VarString).Value = _description;
