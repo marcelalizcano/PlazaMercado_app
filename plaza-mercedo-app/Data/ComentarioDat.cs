@@ -26,7 +26,7 @@ namespace Data
             objPer.closeConnection();
             return objData;
         }
-        //Metodo para mostrar unicamente el id y la clasificacion
+        //Metodo para mostrar unicamente el id
         public DataSet showCommentDDL()
         {
             MySqlDataAdapter objAdapter = new MySqlDataAdapter();
@@ -43,7 +43,7 @@ namespace Data
         }
 
         //Metodo para guardar un nuevo comentario
-        public bool saveComment(string _text, DateTime p_com_fecha, int p_com_clasificacion)
+        public bool saveComment(string p_com_text, DateTime p_com_fecha, int p_com_clasificacion)
         {
             bool executed = false;
             int row;
@@ -52,9 +52,9 @@ namespace Data
             objSelectCmd.Connection = objPer.openConnection();
             objSelectCmd.CommandText = "spInsertComment"; //nombre del procedimiento almacenado
             objSelectCmd.CommandType = CommandType.StoredProcedure;
-            objSelectCmd.Parameters.Add("p_com_text", MySqlDbType.VarString).Value = _text;
-            objSelectCmd.Parameters.Add("p_com_fecha", MySqlDbType.DateTime).Value = p_com_fecha;
-            objSelectCmd.Parameters.Add("p_com_clasificacion", MySqlDbType.Int32).Value = p_com_clasificacion;
+            objSelectCmd.Parameters.Add("com_text", MySqlDbType.VarString).Value = p_com_text;
+            objSelectCmd.Parameters.Add("com_fecha", MySqlDbType.DateTime).Value = p_com_fecha;
+            objSelectCmd.Parameters.Add("com_clasificacion", MySqlDbType.Int32).Value = p_com_clasificacion;
 
             try
             {
@@ -74,7 +74,7 @@ namespace Data
         }
 
         //Metodo para actualizar una Comentario
-        public bool updateComment(int p_com_id, int p_com_clasificacion)
+        public bool updateComment(int p_com_id, int p_com_clasificacion, string p_com_text, DateTime p_com_fecha)
         {
             bool executed = false;
             int row;
@@ -83,8 +83,10 @@ namespace Data
             objSelectCmd.Connection = objPer.openConnection();
             objSelectCmd.CommandText = "spUpdateComment"; //nombre del procedimiento almacenado
             objSelectCmd.CommandType = CommandType.StoredProcedure;
-            objSelectCmd.Parameters.Add("p_com_id", MySqlDbType.Int32).Value = p_com_id;
-            objSelectCmd.Parameters.Add("p_com_clasificacion", MySqlDbType.Int32).Value = p_com_clasificacion;
+            objSelectCmd.Parameters.Add("com_id", MySqlDbType.Int32).Value = p_com_id;
+            objSelectCmd.Parameters.Add("com_clasificacion", MySqlDbType.Int32).Value = p_com_clasificacion;
+            objSelectCmd.Parameters.Add("com_text", MySqlDbType.VarString).Value = p_com_text;
+            objSelectCmd.Parameters.Add("com_fecha", MySqlDbType.DateTime).Value = p_com_fecha;
 
             try
             {
@@ -113,7 +115,7 @@ namespace Data
             objSelectCmd.Connection = objPer.openConnection();
             objSelectCmd.CommandText = "spDeleteComment"; //nombre del procedimiento almacenado
             objSelectCmd.CommandType = CommandType.StoredProcedure;
-            objSelectCmd.Parameters.Add("p_com_id", MySqlDbType.Int32).Value = p_com_id;
+            objSelectCmd.Parameters.Add("com_id", MySqlDbType.Int32).Value = p_com_id;
 
             try
             {
