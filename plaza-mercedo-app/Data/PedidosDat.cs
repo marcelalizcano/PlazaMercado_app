@@ -38,7 +38,7 @@ namespace Data
             // Se cierra la conexión después de obtener los datos.
             objPer.closeConnection();
 
-            // Se devuelve el DataSet que contiene los productos.
+            // Se devuelve el DataSet que contiene los pedidos.
             return objData;
         }
         //Metodo para guardar un nuevo Pedidos
@@ -48,13 +48,13 @@ namespace Data
             bool executed = false;
             int row;// Variable para almacenar el número de filas afectadas por la operación.
 
-            // Se crea un comando MySQL para insertar un nuevo producto utilizando un procedimiento almacenado.
+            // Se crea un comando MySQL para insertar un nuevo pedido utilizando un procedimiento almacenado.
             MySqlCommand objSelectCmd = new MySqlCommand();
             objSelectCmd.Connection = objPer.openConnection();
             objSelectCmd.CommandText = "spInsertPedidos"; //nombre del procedimiento almacenado
             objSelectCmd.CommandType = CommandType.StoredProcedure;
 
-            // Se agregan parámetros al comando para pasar los valores del producto.
+            // Se agregan parámetros al comando para pasar los valores del pedido.
             objSelectCmd.Parameters.Add("p_date", MySqlDbType.VarString).Value = _date;
             objSelectCmd.Parameters.Add("p_state", MySqlDbType.VarString).Value = _state;
             objSelectCmd.Parameters.Add("p_specification", MySqlDbType.Int32).Value = _specification;
@@ -93,7 +93,7 @@ namespace Data
             objSelectCmd.CommandText = "spUpdatePedidos"; //nombre del procedimiento almacenado
             objSelectCmd.CommandType = CommandType.StoredProcedure;
 
-            // Se agregan parámetros al comando para pasar los valores del producto.
+            // Se agregan parámetros al comando para pasar los valores del pedido.
             objSelectCmd.Parameters.Add("p_id", MySqlDbType.Int32).Value = _id;
             objSelectCmd.Parameters.Add("p_date", MySqlDbType.VarString).Value = _date;
             objSelectCmd.Parameters.Add("p_state", MySqlDbType.VarString).Value = _state;
