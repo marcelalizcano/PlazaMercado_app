@@ -84,7 +84,7 @@ namespace Data
             objSelectCmd.CommandType = CommandType.StoredProcedure;
             objSelectCmd.Parameters.Add("ges_id", MySqlDbType.Int32).Value = p_ges_id;
             objSelectCmd.Parameters.Add("ges_fecha", MySqlDbType.DateTime).Value = p_ges_fecha;
-            objSelectCmd.Parameters.Add("ges_descripcion", MySqlDbType.String).Value = p_ges_descripcion;
+            objSelectCmd.Parameters.Add("ges_descripcion", MySqlDbType.VarString).Value = p_ges_descripcion;
 
 
             try
