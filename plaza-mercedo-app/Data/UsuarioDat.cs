@@ -38,7 +38,7 @@ namespace Data
             // Se cierra la conexión después de obtener los datos.
             objPer.closeConnection();
 
-            // Se devuelve el DataSet que contiene los productos.
+            // Se devuelve el DataSet que contiene de los usuarios.
             return objData;
         }
         //Metodo para guardar un nuevo Usuario
@@ -48,13 +48,13 @@ namespace Data
             bool executed = false;
             int row;// Variable para almacenar el número de filas afectadas por la operación.
 
-            // Se crea un comando MySQL para insertar un nuevo producto utilizando un procedimiento almacenado.
+            // Se crea un comando MySQL para insertar un nuevo usuario utilizando un procedimiento almacenado.
             MySqlCommand objSelectCmd = new MySqlCommand();
             objSelectCmd.Connection = objPer.openConnection();
             objSelectCmd.CommandText = "spInsertUsuario"; //nombre del procedimiento almacenado
             objSelectCmd.CommandType = CommandType.StoredProcedure;
 
-            // Se agregan parámetros al comando para pasar los valores del producto.
+            // Se agregan parámetros al comando para pasar los valores del usuario.
             objSelectCmd.Parameters.Add("u_email", MySqlDbType.VarString).Value = _email;
             objSelectCmd.Parameters.Add("u_password", MySqlDbType.VarString).Value = _password;
             objSelectCmd.Parameters.Add("u_salt", MySqlDbType.Int32).Value = _salt;
@@ -96,7 +96,7 @@ namespace Data
             objSelectCmd.CommandText = "spUpdateUsuario"; //nombre del procedimiento almacenado
             objSelectCmd.CommandType = CommandType.StoredProcedure;
 
-            // Se agregan parámetros al comando para pasar los valores del producto.
+            // Se agregan parámetros al comando para pasar los valores del usuario.
             objSelectCmd.Parameters.Add("u_id", MySqlDbType.Int32).Value = _id;
             objSelectCmd.Parameters.Add("u_email", MySqlDbType.VarString).Value = _email;
             objSelectCmd.Parameters.Add("u_password", MySqlDbType.VarString).Value = _password;
