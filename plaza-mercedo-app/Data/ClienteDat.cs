@@ -26,21 +26,22 @@ namespace Data
             objPer.closeConnection();
             return objData;
         }
-        //Metodo para mostrar unicamente el id 
-        public DataSet showClientsById()
+        //Metodo para mostrar unicamente el id y la descripcion de los Clientes, en el DropDownList
+        public DataSet showClientsDDL()
         {
             MySqlDataAdapter objAdapter = new MySqlDataAdapter();
             DataSet objData = new DataSet();
 
             MySqlCommand objSelectCmd = new MySqlCommand();
             objSelectCmd.Connection = objPer.openConnection();
-            objSelectCmd.CommandText = "spSelectClientById";
+            objSelectCmd.CommandText = "spSelectClientsDDL";
             objSelectCmd.CommandType = CommandType.StoredProcedure;
             objAdapter.SelectCommand = objSelectCmd;
             objAdapter.Fill(objData);
             objPer.closeConnection();
             return objData;
         }
+
 
         //Metodo para guardar un nuevo cliente
         public bool saveCategory(string c_names,string c_lastnames,
