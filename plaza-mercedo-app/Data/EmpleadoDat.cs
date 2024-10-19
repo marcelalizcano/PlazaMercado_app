@@ -26,15 +26,16 @@ namespace Data
             objPer.closeConnection();
             return objData;
         }
-        //Metodo para mostrar unicamente el id 
-        public DataSet showEmployeesById()
+
+        //Metodo para mostrar unicamente el id y la descripcion de los Empleados
+        public DataSet showEmployeesDDL()
         {
             MySqlDataAdapter objAdapter = new MySqlDataAdapter();
             DataSet objData = new DataSet();
 
             MySqlCommand objSelectCmd = new MySqlCommand();
             objSelectCmd.Connection = objPer.openConnection();
-            objSelectCmd.CommandText = "spSelectEmployeeById";
+            objSelectCmd.CommandText = "spSelectEmployeesDDL";
             objSelectCmd.CommandType = CommandType.StoredProcedure;
             objAdapter.SelectCommand = objSelectCmd;
             objAdapter.Fill(objData);
