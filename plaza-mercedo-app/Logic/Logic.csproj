@@ -70,7 +70,18 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoriaLog.cs" />
+    <Compile Include="ClienteLog.cs" />
+    <Compile Include="ComentarioLog.cs" />
+    <Compile Include="EmpleadoLog.cs" />
+    <Compile Include="GestionLog.cs" />
+    <Compile Include="PedidosLog.cs" />
+    <Compile Include="PermisoLog.cs" />
+    <Compile Include="ProductoLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProveedorLog.cs" />
+    <Compile Include="RolLog.cs" />
+    <Compile Include="UsuarioLog.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
